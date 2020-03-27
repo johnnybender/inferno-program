@@ -1,4 +1,4 @@
-procedure:
+procedure: # JB: When writing a program to make this into a matrix, or however you planned on publishing a non-developer friendly version of this, it would be helpful to populate the matrix with the inferno_tests reference ID and the inferno_tests name (and potentially even description). Additionally, it might be helpful to parse the specific part of the test procedure language that is met by the Inferno test. In top of this, there seems to be tests that are listed several times across different test procedure steps; it would be interesting to see a matrix of all the inferno tests and the corresponding lists of test procedure steps they support.
   - section: Paragraph (g)(10)(iii) - Application registration
     steps:
       - group: Application Registration
@@ -9,7 +9,7 @@ procedure:
           the purposes of Electronic Health Information (EHI) access for
           single patients, including support for application registration
           functions to enable authentication and authorization in §
-          170.315(g)(10)(v)
+          170.315(g)(10)(v).
         TLV: |
           The tester verifies the Health IT Module supports application
           registration with an authorization server for the purposes of EHI
@@ -17,7 +17,7 @@ procedure:
           registration functions to enable authentication and authorization in
           § 170.315(g)(10)(v).
         inferno_supported: no
-        inferno_notes: |
+        inferno_notes: | # JB: Since we're not requiring Dynamic Registration as part of the rule, I'm hesitant to say that we may include Dynamic Registration in the Program Edition without other caveats. We could word it as "Inferno Program Edition may include an optional test for conformance to the RFC 7591 'OAuth 2.0 Dynamic Client Registration Protocol Dynamic Registration' as an optional way for the health IT developer to demonstrate the Health IT Module supports application registration."
           Application registration is considered out of scope for Inferno
           Program Edition because it cannot be done in an automated fashion.
           Inferno Program Edition may in the future include Dynamic Registration
@@ -38,7 +38,7 @@ procedure:
           registration functions to enable authentication and authorization in
           § 170.315(g)(10)(v).
         inferno_supported: no
-        inferno_notes: |
+        inferno_notes: | # JB: Would dynamic registration make sense for Backend Services Authorization guide? If so, would use the following: "Inferno Program Edition may include an optional test for conformance to the RFC 7591 'OAuth 2.0 Dynamic Client Registration Protocol Dynamic Registration' as an optional way for the health IT developer to demonstrate the Health IT Module supports application registration."
           Application registration is considered out of scope for Inferno
           Program Edition because it cannot be accomplished using automation.
           Inferno Program Edition may in the future include OAuth Dynamic Registration
@@ -49,7 +49,7 @@ procedure:
     steps:
       - group: Secure connection
         index: 1
-        SUT: | 
+        SUT: | # JB: Do the tests included below include "all transmissions?" Is it easy to defend transmissions that weren't included?
           For all transmissions between the Health IT Module and the
           application, the health IT developer demonstrates the use of a
           secure and trusted connection in accordance with the
@@ -107,7 +107,8 @@ procedure:
           * Passing the parameters: “iss” and “launch”.
         inferno_supported: yes
         inferno_tests:
-          - EHB-OELS-01 - EHB-OELS-02
+          - EHB-OELS-01
+          - EHB-OELS-02
       - index: 3
         SUT: |
           [Standalone-Launch] The health IT developer demonstrates the
@@ -122,8 +123,10 @@ procedure:
           implementation specification adopted in § 170.215(a)(3).
         inferno_supported: yes
         inferno_tests:
-          - SPA-OSD-01 - SPA-OSD-06
-          - SPB-OSLS-01 - SPB-OSLS-09
+          - SPA-OSD-01 
+          - SPA-OSD-06
+          - SPB-OSLS-01 
+          - SPB-OSLS-09
       - index: 4
         SUT: |
           [Both] The health IT developer demonstrates the ability of the
@@ -141,8 +144,10 @@ procedure:
           * A FHIR “CapabilityStatement”.
         inferno_supported: yes
         inferno_tests:
-          - SPA-OSD-01 - SPA-OSD-02
-          - EHA-OSD-01 - EHA-OSD-02
+          - SPA-OSD-01 
+          - SPA-OSD-02
+          - EHA-OSD-01 
+          - EHA-OSD-02
       - index: 5
         SUT: |
           [Both] The health IT developer demonstrates the ability of the
@@ -211,8 +216,10 @@ procedure:
           * “aud”.
         inferno_supported: yes
         inferno_tests: 
-            - SPB-OSLS-02 - SPB-OSLS-03
-            - EHA-OSLS-04 - EHA-OSLS-05
+          - SPB-OSLS-02 
+          - SPB-OSLS-03
+          - EHA-OSLS-04 
+          - EHA-OSLS-05
       - index: 8
         SUT: |
           [Both] The health IT developer demonstrates the ability of the
@@ -245,15 +252,18 @@ procedure:
         inferno_supported: yes
         inferno_tests:
           - SPB-OSLS-02
-          - SPB-OSLS-07 - SPB-OSLS-08
+          - SPB-OSLS-07 
+          - SPB-OSLS-08
           - SPB-OSLS-10
           - SPB-OSLS-12
           - EHB-OELS-05
-          - EHB-OELS-09 - EHB-OELS-10
+          - EHB-OELS-09 
+          - EHB-OELS-10
           - EHB-OELS-12
-          - EHB-OELS-14 - EHB-OELS-16
+          - EHB-OELS-14 
+          - EHB-OELS-16
       - index: 9
-        SUT: |
+        SUT: | # JB: You'll have to help me understand this one.
           [Both] The health IT developer demonstrates the ability of the
           Health IT Module to evaluate the authorization request and
           request end-user input, if applicable (required for patient-facing
@@ -320,9 +330,12 @@ procedure:
           tests.  For the pratitioner EHR launch, we may not require all scopes anywhere explicitly,
           though we do test for all resources which implies that we require all scopes.
         inferno_tests:
-          - SPB-OSLS-01 - SPB-OSLS-08
-          - EHB-OELS-01 - EHB-OELS-10
-          - AVU-01 - AVU-12
+          - SPB-OSLS-01 
+          - SPB-OSLS-08
+          - EHB-OELS-01 
+          - EHB-OELS-10
+          - AVU-01 
+          - AVU-12
           - USCP-08
           - USCAI-03
           - USCCP-05
@@ -354,7 +367,7 @@ procedure:
           - USCPRO-01
           - USCPROV-01
       - index: 10 
-        SUT: |
+        SUT: | # JB: You'll have to help me understand this one.
           [Both] The health IT developer demonstrates the ability of the
           Health IT Module to deny an application’s authorization request
           according to a patient’s preferences selected in step 9 of this
@@ -372,10 +385,12 @@ procedure:
           (non-USCDI) resources  because our tests are not
           sophisticated enough in this area to find references to check.
         inferno_tests:
-          - SPB-OSLS-01 - SPB-OSLS-08
-          - AVR-01 - AVR-15
+          - SPB-OSLS-01 
+          - SPB-OSLS-08
+          - AVR-01 
+          - AVR-15
       - index: 11
-        SUT: |
+        SUT: | # JB: Do these tests (TLS and Token exchange response body contains required information encoded in JSON) have anything to do with enabling "offline_access"? Was SPB-OSLS-08 included because the JSON body includes "scope"?
           [Both] The health IT developer demonstrates the ability of Health IT Module to
           evaluate the authorization request and request end-user input, if
           applicable (required for patient-facing applications), including the
@@ -395,7 +410,8 @@ procedure:
           was required, and does not currently have a place where the tester
           can note this.
         inferno_tests:
-          - SPB-OSLS-01 - SPB-OSLS-08
+          - SPB-OSLS-01 
+          - SPB-OSLS-08
       - index: 12
         SUT: |
           [EHR-Launch] The health IT developer demonstrates the ability of
@@ -504,7 +520,7 @@ procedure:
           - SPB-OSLS-08
           - EHB-OELS-10
       - index: 16
-        SUT: |
+        SUT: | # JB: What does it mean that Inferno checks that the client can deny portions of the scopes requested? Did you not include a test for a full denial because the standard does not require this as an explicit "SHALL" requirement?
           [Both] The health IT developer demonstrates the ability of the
           Health IT Module to deny an application’s authorization request in
           accordance with the implementation specification adopted in §
@@ -520,16 +536,19 @@ procedure:
           requested, regarding which resources are available.  We do not
           check a full denial.
         inferno_tests:
-          - RPA-OSRLS-02 - RPA-OSRLS-08
-          - AVR-01 - AVR-15
+          - RPA-OSRLS-02 
+          - RPA-OSRLS-08
+          - AVR-01 
+          - AVR-15
       - index: 17
         SUT: |
-          [Standalone-Launch] The health IT developer the ability of the Health IT
-          Module to return a “Patient” FHIR resource that matches the
-          patient context provided in step 8 of this section according to the
-          implementation specification adopted in § 170.215(a)(2).
+          [Standalone-Launch] The health IT developer demonstrates the ability 
+          of the Health IT Module to return a “Patient” FHIR resource that 
+          matches the patient context provided in step 8 of this section 
+          according to the implementation specification adopted in 
+          § 170.215(a)(2).
         TLV: |
-          [Standalone-Launch] The tester verifiesthe ability of the Health IT
+          [Standalone-Launch] The tester verifies the ability of the Health IT
           Module to return a “Patient” FHIR resource that matches the
           patient context provided in step 8 of this section according to the
           implementation specification adopted in § 170.215(a)(2).
@@ -549,9 +568,11 @@ procedure:
           § 170.215(a)(2).
         inferno_supported: yes
         inferno_tests:
-          - SPD-TR-03 - SPD-TR-05
-          - EHD-TR-03 - EHD-TR-05
-      - group: Subsequent Connections: Authentication and Authorization for Patient and User Scopes
+          - SPD-TR-03
+          - SPD-TR-05
+          - EHD-TR-03
+          - EHD-TR-05
+      - group: Subsequent Connections - Authentication and Authorization for Patient and User Scopes
         index: 19
         SUT: | 
           The health IT developer demonstrates the ability of the Health IT
@@ -591,8 +612,10 @@ procedure:
           adopted in § 170.215(a)(3).
         inferno_supported: yes
         inferno_tests:
-          - SPD-TR-01 - SPD-TR-02
-          - EHD-TR-01 - EHD-TR-02
+          - SPD-TR-01 
+          - SPD-TR-02
+          - EHD-TR-01 
+          - EHD-TR-02
   - section: Paragraph (g)(10)(vi) – Patient authorization revocation
     steps:
       - group: Patient Authorization Revocation
@@ -603,7 +626,7 @@ procedure:
           including a demonstration of the inability of the application with
           revoked access to receive patient EHI.
         TLV: |
-          The tester verifiesthe ability of the Health IT Module to revoke
+          The tester verifies the ability of the Health IT Module to revoke
           access to an authorized application at a patient’s direction,
           including a demonstration of the inability of the application with
           revoked access to receive patient EHI.
@@ -627,7 +650,8 @@ procedure:
           170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDA-02 - BDA-08
+          - BDA-02 
+          - BDA-08
       - index: 2
         SUT: |
           The health IT developer demonstrates the ability of the Health IT
@@ -739,9 +763,10 @@ procedure:
           implementation specification adopted in § 170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDA-02 - BDA-06
+          - BDA-02 
+          - BDA-06
       - index: 8
-        SUT: |
+        SUT: | # JB: For ONC - What guidance are we giving to health IT developers, ATLs, and ACBs to support this requirement?
           The health IT developer demonstrates the ability of the Health IT
           Module to assure the scope requested by an application is no
           greater than the pre-authorized scope for multiple patients
@@ -793,9 +818,11 @@ procedure:
           170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDA-02 - BDA-06
-          - BDE-03 - BDE-05
-  - section: Paragraph (g)(10)(vii) –Token introspection
+          - BDA-02 
+          - BDA-06
+          - BDE-03 
+          - BDE-05
+  - section: Paragraph (g)(10)(vii) – Token introspection
     steps:
       - group: Token Introspection
         index: 1
@@ -829,9 +856,10 @@ procedure:
           170.215(a)(2).
         inferno_supported: yes
         inferno_tests:
-          - USCCAP-02 - USCCAP-05
+          - USCCAP-02 
+          - USCCAP-05
       - index: 2
-        SUT: |
+        SUT: | # JB: For ONC - regarding "All information is accurate and without omission," are we going to provide guidance to ATLs and ACBs to perform non-programmatic information validation checks?
           The health IT developer demonstrates the ability of the Health IT
           Module to respond with data that meet the following conditions:
           * All data elements indicated with a cardinality of one or greater and / or “must support” are included;
@@ -890,7 +918,6 @@ procedure:
           implementation specification adopted in § 170.215(a)(2) according
           to the “Basic Provenance Guidance” section of the implementation
           specification adopted in § 170.215(a)(2).
-
         TLV: |
           The tester verfies the ability of the Health IT
           Module to support a “Provenance” FHIR resource for all the FHIR
@@ -925,7 +952,8 @@ procedure:
           - USCOHR-09
           - USCORR-09
           - USCPROC-08
-          - USCPROV-01 - USCPROV-06
+          - USCPROV-01 
+          - USCPROV-06
       - index: 4
         SUT: |
           The health IT developer demonstrates the ability of the Health IT
@@ -941,7 +969,8 @@ procedure:
           specification adopted in § 170.215(a)(2).
         inferno_supported: yes
         inferno_tests:
-          - USCCN-01 - USCCN-09
+          - USCCN-01 
+          - USCCN-09
       - index: 5
         SUT: |
           If supported, and for responses to data for a single patient only, the
@@ -975,7 +1004,8 @@ procedure:
           * “DataAbsentReason” Code System.
         inferno_supported: yes
         inferno_tests: 
-          - USCDAR-01 - USCDAR-02
+          - USCDAR-01 
+          - USCDAR-02
       - group: Response to Requests for a Single Patient’s Data
         index: 7
         SUT: |
@@ -1084,9 +1114,10 @@ procedure:
         inferno_supported: yes
         inferno_tests:
           - BDGV-03
-          - BDGV-06 - BDGV-23
+          - BDGV-06 
+          - BDGV-23
       - index: 9
-        SUT: |
+        SUT: | # JB: For ONC - What guidance are we giving to health IT developers, ATLs, and ACBs to support this requirement?
           The health IT developer demonstrates the ability of the Health IT
           Module to limit the data returned to only those FHIR resources for
           which the client is authorized according to the implementation
@@ -1111,7 +1142,8 @@ procedure:
           implementation adopted in § 170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDE-06 - BDE-07
+          - BDE-06 
+          - BDE-07
       - index: 11
         SUT: |
           The health IT developer demonstrates the ability of the Health IT
@@ -1123,7 +1155,8 @@ procedure:
           implementation adopted in § 170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDE-03 - BDE-05
+          - BDE-03 
+          - BDE-05
       - index: 12
         SUT: |
           The health IT developer demonstrates the ability of the Health IT
@@ -1147,7 +1180,8 @@ procedure:
           implementation specification adopted in § 170.215(a)(4).
         inferno_supported: yes
         inferno_tests:
-          - BDE-07 - BDE-08
+          - BDE-07 
+          - BDE-08
       - index: 14
         SUT: |
           The health IT developer demonstrates the ability of the Health IT
@@ -1161,7 +1195,8 @@ procedure:
           “ndjson” format for files provided.
         inferno_supported: yes
         inferno_tests:
-          - BDGV-01 - BDGV-23
+          - BDGV-01 
+          - BDGV-23
       - index: 15
         SUT: |
           The health IT developer demonstrates that the information
@@ -1176,7 +1211,7 @@ procedure:
           - BDGV-05
   - section: Paragraph (g)(10)(viii) – Documentation
     steps:
-      - group: Supported Search Operations for a Single Patient’s Data
+      - group: API Documentation Requirements
         index: 1
         SUT: |
           The health IT developer supplies documentation describing the
